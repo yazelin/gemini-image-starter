@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-Hant-TW" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 生圖入門模板｜快速了解</title>
+<meta name="description" content="從一句話 prompt 到結構化 prompt 設計，3 分鐘看懂怎麼用 Google Gemini 把生圖變得可控、可重現。完整逐步教學在實戰手冊。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#e879f9; --brand-solid:#c026d3;
+  --bg:#1a0a1f; --bg2:#0d0410; --panel:rgba(255,255,255,.05); --border:rgba(255,255,255,.12);
+  --text:#f1eef9; --muted:#a79fbe; --code-bg:#0b0716; --code-text:#d8d2ec; --ok:#7fdca0;
+}
+html[data-theme="light"]{
+  --brand:#a21caf; --brand-solid:#86198f;
+  --bg:#fdf4ff; --bg2:#f5e0f7; --panel:#ffffff; --border:rgba(28,18,52,.12);
+  --text:#1c1630; --muted:#5b5470; --code-bg:#17132b; --code-text:#e7e2f6; --ok:#1f8a4c;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(1200px 600px at 82% -8%, color-mix(in srgb,var(--brand) 22%,transparent), transparent 60%),linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.8;min-height:100vh}
+a{color:var(--brand);text-decoration:none}
+a:hover{filter:brightness(1.15)}
+.wrap{max-width:880px;margin:0 auto;padding:20px 22px 90px}
+.topbar{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--border);box-shadow:0 6px 18px -14px rgba(0,0,0,.5)}
+.topbar-inner{max-width:880px;margin:0 auto;padding:12px 22px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.brand{font-weight:900;color:var(--text)}
+.toprow{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--border);padding:8px 14px;border-radius:999px;font-weight:700;font-size:14px;background:var(--panel);color:var(--text);cursor:pointer}
+.btn.primary{background:var(--brand-solid);border-color:transparent;color:#fff}
+.eyebrow{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--brand);font-weight:600}
+h1{font-size:clamp(32px,6vw,56px);line-height:1.08;margin:14px 0 16px;font-weight:900;letter-spacing:-.02em}
+.lead{font-size:clamp(18px,2.4vw,22px);color:var(--text);max-width:680px;margin:0 0 10px}
+.sub{color:var(--muted);max-width:680px;margin:0 0 24px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.nav{display:flex;flex-wrap:wrap;gap:8px;padding:2px 0 10px;margin-bottom:6px}
+.nav a{font-size:13px;border:1px solid var(--border);border-radius:999px;padding:6px 12px;background:var(--panel);color:var(--muted);font-weight:500}
+.nav a:hover{color:var(--brand);border-color:var(--brand)}
+section{border:1px solid var(--border);border-radius:20px;background:var(--panel);padding:26px 26px 28px;margin:16px 0;scroll-margin-top:74px}
+h2{font-size:26px;margin:0 0 8px;letter-spacing:-.01em}
+.tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:600}
+p,li{color:var(--text)}
+.muted{color:var(--muted)}
+ul{padding-left:22px;margin:10px 0}
+li{margin:6px 0}
+pre{background:var(--code-bg);color:var(--code-text);border-radius:12px;padding:15px 16px;overflow:auto;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.65;margin:10px 0}
+code{font-family:'JetBrains Mono',monospace}
+.step{font-size:13px;color:var(--muted);margin:14px 0 4px;font-weight:600}
+.ok{margin-top:12px;border-left:4px solid var(--ok);background:color-mix(in srgb,var(--ok) 12%,transparent);padding:10px 14px;border-radius:8px;color:var(--text)}
+.contrast{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+.contrast th,.contrast td{border:1px solid var(--border);padding:8px 11px;text-align:left;vertical-align:top}
+.contrast th{background:color-mix(in srgb,var(--brand) 16%,transparent);font-weight:700}
+.chapters{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:12px}
+.ch{display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:12px;padding:12px 14px;background:color-mix(in srgb,var(--brand) 5%,transparent);color:var(--text);font-weight:600}
+.ch:hover{border-color:var(--brand)}
+.ch-n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--brand);font-weight:700;min-width:22px}
+.get{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+.get-card{flex:1 1 240px;border:1px solid var(--border);border-radius:14px;padding:18px;background:color-mix(in srgb,var(--brand) 6%,transparent)}
+.get-card h3{margin:0 0 6px;font-size:17px}
+.footer{margin-top:36px;color:var(--muted);font-size:13px;text-align:center}
+.theme-toggle{font-family:'Noto Sans TC',sans-serif}
+@media(max-width:640px){.wrap{padding:16px 16px 70px}section{padding:20px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">← AI 生圖入門</a>
+    <div class="toprow">
+      <a class="btn" href="https://github.com/yazelin/gemini-image-starter" target="_blank" rel="noopener">GitHub</a>
+      <button class="btn theme-toggle" id="themeBtn" type="button" aria-label="切換深淺色">深色</button>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">AI 生圖入門 · 3 分鐘看懂</div>
+    <h1>讓 AI 生圖從「隨機」變「可控」</h1>
+    <p class="lead">同一句 <code>a cat</code> 每次生出不同的貓，是因為決定權全在模型手上。這個範本教你用<strong>結構化 prompt</strong>把主體、風格、光線、構圖、配色一個個拿回來，讓同樣的輸入生出同一種畫面。</p>
+    <p class="sub">這頁讓你 3 分鐘知道這是什麼、能做出什麼、真的會動。要逐章、prompt 設計細節、完整對照的完整版，在實戰手冊裡。</p>
+    <div class="cta">
+      <a class="btn primary" href="#quickstart">5 分鐘跑起來 ↓</a>
+      <a class="btn" href="https://github.com/yazelin/gemini-image-starter" target="_blank" rel="noopener">看 GitHub 原始碼</a>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <a href="#what">這是什麼</a>
+    <a href="#outcomes">你會做出什麼</a>
+    <a href="#quickstart">5 分鐘跑起來</a>
+    <a href="#part2">Part 2 對照</a>
+    <a href="#chapters">完整章節</a>
+    <a href="#get">拿完整手冊</a>
+  </nav>
+
+  <section id="what">
+    <div class="tag">What</div>
+    <h2>這是什麼、解決什麼</h2>
+    <p>想用 AI 生圖做產品（貼圖、頭像、角色、素材），常卡在「為什麼同一句話每次生出來都不一樣？怎麼把腦中的畫面準確描述給模型？哪些詞才真的有用？」</p>
+    <p>這個範本是「繪圖魔法師」系列的<strong>基礎 / 前置模組</strong>：用 Google Gemini（<code>gemini-2.5-flash-image</code>）當引擎，帶你從一句話 prompt 的痛點，走到結構化 prompt 設計。核心魔法不是模型，是 <strong>prompt 設計</strong>——同樣的欄位輸入，描述同樣的畫面，可控、可重現。</p>
+  </section>
+
+  <section id="outcomes">
+    <div class="tag">Outcomes</div>
+    <h2>你會做出什麼</h2>
+    <ul>
+      <li>親眼看懂「一句話 <code>a cat</code>」為什麼每次都不一樣、不可控。</li>
+      <li>用主體 / 風格 / 光線 / 構圖 / 配色 / 負面詞組出一條<strong>結構化 prompt</strong>。</li>
+      <li>讀懂對齊真實 Gemini 的 client：怎麼 POST、怎麼從回應拿回 base64 圖片。</li>
+      <li>不用 API key、不連網，就跑完整套確定性測試驗證整條流程。</li>
+      <li>拿到真實 key 後，一行指令真的生出可重現的圖。</li>
+    </ul>
+  </section>
+
+  <section id="quickstart">
+    <div class="tag">Quick Win</div>
+    <h2>5 分鐘跑起來</h2>
+    <p class="muted">需要 <a href="https://docs.astral.sh/uv/" target="_blank" rel="noopener">uv</a>。<strong>跑測試不需要任何 API key</strong>，整套用本地假 Gemini server 驗證。</p>
+    <div class="step"><strong>1.</strong> 取得並安裝（Ubuntu / Windows 通用）</div>
+    <pre><code>git clone https://github.com/yazelin/gemini-image-starter.git
+cd gemini-image-starter
+uv sync</code></pre>
+    <div class="step"><strong>2.</strong> 跑 smoke test（最快的驗證，免 key、免連網）</div>
+    <pre><code>uv run python client_smoke_test.py</code></pre>
+    <div class="step"><strong>3.</strong> 真實輸出</div>
+    <pre><code>== tests/test_prompt.py ==
+OK: prompt builder test passed
+
+== tests/test_request.py ==
+OK: request/response shaping test passed
+
+== tests/test_gen_fake.py ==
+OK: gen against fake Gemini server passed
+
+OK: all checks passed</code></pre>
+    <div class="ok">成功長這樣：看到 <strong>OK: all checks passed</strong>，就代表 prompt builder、請求／回應形狀、對假 Gemini server 的完整 build → POST → 解析 → 存檔整條都跑通了。要真的生圖，去 <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a> 拿免費 key 設成 <code>GEMINI_API_KEY</code> 即可。</div>
+  </section>
+
+  <section id="part2">
+    <div class="tag">Part 2 · 對照組</div>
+    <h2>一句話 prompt → 結構化 prompt</h2>
+    <p>Part 1（<code>part1_naive/naive.py</code>）只丟一句 <code>"a cat"</code>：姿勢、畫風、背景、光線全由模型替你決定，每次都不一樣。Part 2（<code>app/prompt.py</code>）把每個決定命名成欄位，同樣的輸入永遠組出同一條描述。</p>
+    <table class="contrast">
+      <tr><th>面向</th><th>Part 1：一句話 prompt</th><th>Part 2：結構化 prompt</th></tr>
+      <tr><td>輸入</td><td><code>"a cat"</code></td><td>主體 / 風格 / 光線 / 構圖 / 配色 / 負面詞</td></tr>
+      <tr><td>結果</td><td>每次都不一樣、不可控</td><td>同輸入同描述、可控可重現</td></tr>
+      <tr><td>核心魔法</td><td>無，交給模型隨機</td><td><strong>prompt 設計</strong></td></tr>
+    </table>
+    <p>結構化 prompt 真的長這樣（<code>demo_structured.py</code> 的真實輸出）：</p>
+    <pre><code>a cat sitting by a window, style: ukiyo-e woodblock print, lighting: soft morning light, composition: centered, close-up, color palette: muted indigo and gold. Avoid: text, watermark, extra limbs</code></pre>
+    <p>核心一句：<strong>引擎只是工具，把畫面拿回控制權的是 prompt 設計。</strong>完整對照課在 <a href="https://github.com/yazelin/gemini-image-starter/blob/main/docs/08-prompt-engineering.md" target="_blank" rel="noopener">docs/08</a>。</p>
+  </section>
+
+  <section id="chapters">
+    <div class="tag">All Chapters</div>
+    <h2>完整章節（想一章一章讀完整版）</h2>
+    <p class="muted">這頁是快速了解；下面每一章都是完整內容，在 GitHub 上點開就能讀。</p>
+    <div class="chapters">
+      <a class="ch" href="https://github.com/yazelin/gemini-image-starter/blob/main/docs/00-overview.md" target="_blank" rel="noopener"><span class="ch-n">00</span><span>總覽</span></a>
+      <a class="ch" href="https://github.com/yazelin/gemini-image-starter/blob/main/docs/01-quickstart.md" target="_blank" rel="noopener"><span class="ch-n">01</span><span>快速開始</span></a>
+      <a class="ch" href="https://github.com/yazelin/gemini-image-starter/blob/main/docs/02-architecture.md" target="_blank" rel="noopener"><span class="ch-n">02</span><span>架構</span></a>
+      <a class="ch" href="https://github.com/yazelin/gemini-image-starter/blob/main/docs/03-step-by-step.md" target="_blank" rel="noopener"><span class="ch-n">03</span><span>逐步實作</span></a>
+      <a class="ch" href="https://github.com/yazelin/gemini-image-starter/blob/main/docs/04-deployment.md" target="_blank" rel="noopener"><span class="ch-n">04</span><span>部署</span></a>
+      <a class="ch" href="https://github.com/yazelin/gemini-image-starter/blob/main/docs/05-common-pitfalls.md" target="_blank" rel="noopener"><span class="ch-n">05</span><span>常見踩雷</span></a>
+      <a class="ch" href="https://github.com/yazelin/gemini-image-starter/blob/main/docs/06-customize-for-your-use-case.md" target="_blank" rel="noopener"><span class="ch-n">06</span><span>改造成你的場景</span></a>
+      <a class="ch" href="https://github.com/yazelin/gemini-image-starter/blob/main/docs/07-workshop-and-consulting.md" target="_blank" rel="noopener"><span class="ch-n">07</span><span>工作坊與顧問</span></a>
+      <a class="ch" href="https://github.com/yazelin/gemini-image-starter/blob/main/docs/08-prompt-engineering.md" target="_blank" rel="noopener"><span class="ch-n">08</span><span>prompt 工程（對照課）</span></a>
+    </div>
+  </section>
+
+  <section id="get">
+    <div class="tag">Next</div>
+    <h2>要完整逐步？</h2>
+    <p>這頁是快速了解。<strong>逐章讀懂、prompt 設計深入、踩雷清單、FAQ、部署</strong>都在實戰手冊（PDF）裡。</p>
+    <div class="get">
+      <div class="get-card">
+        <h3>取得實戰手冊（免費）</h3>
+        <p class="muted">留個 Email，我把完整 PDF 寄給你。</p>
+        <p><a class="btn primary" href="index.html#waitlist">下載手冊 →</a></p>
+      </div>
+      <div class="get-card">
+        <h3>看原始碼 / 自己改</h3>
+        <p class="muted">程式碼公開，直接拿去改、拿去用。</p>
+        <p><a class="btn" href="https://github.com/yazelin/gemini-image-starter" target="_blank" rel="noopener">GitHub repo →</a></p>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:14px">延伸資源：<a href="https://github.com/yazelin/PromptFill" target="_blank" rel="noopener">PromptFill</a>（結構化提示詞工具）、<a href="https://github.com/yazelin/prompts-vault" target="_blank" rel="noopener">prompts-vault</a>（Nano Banana prompt 收集站）。真實案例：<a href="https://github.com/yazelin/line-sticker-studio" target="_blank" rel="noopener">line-sticker-studio</a>、<a href="https://github.com/yazelin/catime" target="_blank" rel="noopener">catime</a>。</p>
+  </section>
+
+  <p class="footer">© 擎添工業 ChingTech · 林亞澤（Yaze Lin）· <a href="mailto:yazelin@ching-tech.com">yazelin@ching-tech.com</a> · 內容可自由用於學習</p>
+</div>
+
+<script>
+(function(){
+  var KEY='image-theme', root=document.documentElement, btn=document.getElementById('themeBtn');
+  function apply(t){ root.setAttribute('data-theme', t); btn.textContent = (t==='dark' ? '淺色' : '深色'); }
+  var saved = localStorage.getItem(KEY);
+  apply(saved || 'light');
+  btn.addEventListener('click', function(){
+    var next = root.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+    localStorage.setItem(KEY, next); apply(next);
+  });
+})();
+</script>
+</body>
+</html>

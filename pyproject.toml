@@ -1,0 +1,11 @@
+[project]
+name = "gemini-image-starter"
+version = "0.1.0"
+description = "Learn AI image generation: from a naive one-line prompt (Part 1) to structured, controllable prompt design with a minimal Gemini client (Part 2)."
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27",
+]
+
+[tool.uv]
+package = false

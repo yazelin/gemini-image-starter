@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="Gemini Image Starter logo">
+<defs>
+  <linearGradient id="gradL" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#e879f9"/><stop offset="1" stop-color="#a21caf"/></linearGradient>
+  <linearGradient id="bgL" x1="0" y1="0" x2="0.6" y2="1">
+    <stop offset="0" stop-color="#2a0f31"/><stop offset="1" stop-color="#0d0410"/></linearGradient>
+  <radialGradient id="glowL" cx="0.5" cy="0.42" r="0.55">
+    <stop offset="0" stop-color="#e879f9" stop-opacity="0.55"/>
+    <stop offset="0.6" stop-color="#c026d3" stop-opacity="0.12"/>
+    <stop offset="1" stop-color="#e879f9" stop-opacity="0"/></radialGradient>
+  <linearGradient id="sheenL" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="0.12"/>
+    <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+</defs>
+<rect x="2" y="2" width="124" height="124" rx="30" fill="url(#bgL)"/>
+<rect x="2" y="2" width="124" height="124" rx="30" fill="url(#glowL)"/>
+<rect x="2" y="2" width="124" height="124" rx="30" fill="url(#sheenL)"/>
+<rect x="2" y="2" width="124" height="124" rx="30" fill="none" stroke="url(#gradL)" stroke-opacity="0.7" stroke-width="2.5"/>
+<g transform="translate(64 64) scale(0.62)" fill="url(#gradL)">
+  <path d="M0 -50 L11 -11 L50 0 L11 11 L0 50 L-11 11 L-50 0 L-11 -11 Z"/></g>
+</svg>
