@@ -75,7 +75,7 @@ saved structured_cat.png  (same fields -> same kind of picture, every time)
 
 ## 5. 費用與額度
 
-真正生圖要 `GEMINI_API_KEY`(免費申請:https://aistudio.google.com/apikey)。常見卡點:
+真正生圖要 `GEMINI_API_KEY`(免費申請:https://aistudio.google.com/apikey )。常見卡點:
 
 - **沒設 key**:直接跑 `demo_structured.py` 或 `part1_naive/naive.py` 不會炸,但只會印提示、不生圖:
   ```

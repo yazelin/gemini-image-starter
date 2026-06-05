@@ -65,7 +65,7 @@ OK: all checks passed
 
 ## 真正生圖(需要 API key)
 
-確定性測試不需要 key。要真的生出圖,才需要免費的 `GEMINI_API_KEY`(免費申請:https://aistudio.google.com/apikey)。
+確定性測試不需要 key。要真的生出圖,才需要免費的 `GEMINI_API_KEY`(免費申請:https://aistudio.google.com/apikey )。
 
 Part 1 baseline(每次都不一樣):
 
