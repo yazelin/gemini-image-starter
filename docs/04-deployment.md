@@ -85,7 +85,7 @@ saved structured_cat.png  (same fields -> same kind of picture, every time)
 
 - **批次生圖**:把多組欄位放成一個清單,迴圈呼叫 `build_prompt()` + `generate()`,一次生一整套(例如同一角色的多種表情)。
 - **填空式介面**:把「主體 / 風格 / 光線 / 構圖 / 配色 / 負面詞」做成表單,使用者填欄位、後端組 prompt。作者的 [PromptFill](https://github.com/yazelin/PromptFill) 就是這個概念的成品。
-- **風格庫**:把常用的 `style` / `color` 預設存起來重複用,確保系列作風格一致。可以參考 [prompts-vault](https://github.com/yazelin/prompts-vault)(Nano Banana prompt 收集站)現成的高品質 prompt。
+- **風格庫**:把常用的 `style` / `color` 預設存起來重複用,確保系列作風格一致。可以參考 [prompts-vault](https://mukiwu.github.io/prompts-vault/)(Nano Banana prompt 收集站)現成的高品質 prompt。
 - **做成完整產品**:把生圖串進真正的應用。真實案例可以看 [line-sticker-studio](https://github.com/yazelin/line-sticker-studio)(LINE 貼圖製作)與 [catime](https://github.com/yazelin/catime)。
 
 ## 上線前實務提醒

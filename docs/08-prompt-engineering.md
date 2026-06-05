@@ -96,7 +96,7 @@ saved structured_cat.png  (same fields -> same kind of picture, every time)
 把結構化 prompt 的想法做成現成工具:
 
 - [PromptFill](https://github.com/yazelin/PromptFill) — 結構化提示詞工具,把「填欄位 → 組 prompt」做成可操作的介面。
-- [prompts-vault](https://github.com/yazelin/prompts-vault) — Nano Banana(Gemini 影像)prompt 收集站,現成的高品質 prompt 可以照抄、改造。
+- [prompts-vault](https://mukiwu.github.io/prompts-vault/) — Nano Banana(Gemini 影像)prompt 收集站,現成的高品質 prompt 可以照抄、改造。
 
 ## 真實案例:把生圖做成產品
 

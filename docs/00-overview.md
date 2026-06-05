@@ -47,7 +47,7 @@
 學會結構化 prompt 之後,作者自己也做了幾個生圖周邊可以接著玩:
 
 - [PromptFill](https://github.com/yazelin/PromptFill) — 結構化提示詞工具,把「主體 / 風格 / 光線……」這套填空式 prompt 變成可操作介面。
-- [prompts-vault](https://github.com/yazelin/prompts-vault) — Nano Banana prompt 收集站,現成可抄的高品質 prompt。
+- [prompts-vault](https://mukiwu.github.io/prompts-vault/) — Nano Banana prompt 收集站,現成可抄的高品質 prompt。
 
 把生圖做成真正的產品長什麼樣,可以看這兩個真實案例:
 
