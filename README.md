@@ -148,10 +148,10 @@ This repo is also a CTA page for workshops and consulting:
 
 ## 延伸資源
 
-學會 prompt 設計後,可以接這些作者自己做的繪圖周邊:
+學會 prompt 設計後,可以接這些繪圖周邊:
 
-- **PromptFill** — 結構化提示詞工具:[github.com/yazelin/PromptFill](https://github.com/yazelin/PromptFill)
-- **prompts-vault** — Nano Banana prompt 收集站:[mukiwu.github.io/prompts-vault](https://mukiwu.github.io/prompts-vault/)
+- **PromptFill** — 作者自己做的結構化提示詞工具:[github.com/yazelin/PromptFill](https://github.com/yazelin/PromptFill)
+- **prompts-vault** — MUKI 做的 Nano Banana prompt 收集站(外部參考):[mukiwu.github.io/prompts-vault](https://mukiwu.github.io/prompts-vault/)
 
 把生圖做成正式產品的真實案例:
 
